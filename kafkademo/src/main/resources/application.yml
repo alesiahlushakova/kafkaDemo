@@ -1,0 +1,38 @@
+server:
+  port: 8081
+spring:
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+  datasource:
+    url: jdbc:mysql://localhost:3306/ticket
+    username: root
+    password: motherlode
+  jpa:
+    hibernate:
+      ddl-auto: update
+  cloud:
+    config:
+      import-check:
+        enabled: false
+    stream:
+      kafka:
+        streams.binder.serdeError: sendToDlq
+        binder:
+          brokers: localhost:9092
+          auto-create-topics: true
+          auto-add-partitions: true
+          headers: ["type"]
+      bindings:
+        create_ticket:
+          destination: create_ticket
+          content-type: application/json
+        ticket_created:
+          destination: ticket_created
+          content-type: application/json
+        get_ticket_requests:
+          destination: get_ticket_requests
+          content-type: text/html
+        get_ticket_responses:
+          destination: get_ticket_responses
+          content-type: application/json

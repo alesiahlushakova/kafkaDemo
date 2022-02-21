@@ -1,0 +1,11 @@
+POST http://localhost:8081/api/tickets
+Content-Type: application/json
+
+{
+  "id": "test",
+  "name": "test",
+  "description": "test",
+  "severity": "test"
+}
+###
+GET http://localhost:8081/api/tickets/5
