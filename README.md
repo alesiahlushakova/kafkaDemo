@@ -26,3 +26,6 @@ run-nifi.bat
 - Import flow NiFi_Flows.json
 
 ![Alt text](NifiFlowsCapture.PNG?raw=true "Flow")
+
+## 4. To test functionality use test.http file
+
